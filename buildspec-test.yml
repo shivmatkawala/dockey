@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+    commands:
+      - echo Installing Angular CLI...
+      - npm install -g @angular/cli@16
+      - npm install
+      - echo Installing Chrome for Headless Testing...
+      - curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o chrome.rpm
+      - yum install -y atk cups-libs gtk3 libXcomposite libXcursor libXdamage libXrandr alsa-lib libXScrnSaver libXtst xorg-x11-fonts-Type1 xorg-x11-fonts-misc
+      - yum localinstall -y chrome.rpm || yum install -y google-chrome-stable
+  pre_build:
+    commands:
+      - echo Running unit tests...
+      - export CHROME_BIN=$(which google-chrome)
+      - ng test --watch=false --browsers=ChromeHeadless
