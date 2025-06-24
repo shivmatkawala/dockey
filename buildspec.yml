@@ -8,13 +8,17 @@ phases:
       - echo Installing Angular CLI...
       - npm install -g @angular/cli@16
       - npm install
+
   build:
     commands:
       - echo Building Angular app...
       - ng build --configuration development
+
   post_build:
     commands:
       - echo Build completed.
+      - echo Copying buildspec-test.yml into dist...
+      - cp buildspec-test.yml dist/dockey/
 
 artifacts:
   files:
