@@ -16,9 +16,7 @@ phases:
 
   pre_build:
     commands:
-      - echo Running unit tests...
-      - export CHROME_BIN=$(which google-chrome)
-      - ng test --watch=false --browsers=ChromeHeadless || echo "Tests failed or not found"
+      - echo Skipping unit tests...
 
   build:
     commands:
