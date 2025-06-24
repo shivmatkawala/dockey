@@ -23,6 +23,7 @@ phases:
       - cp angular.json dist/dockey/
       - cp tsconfig.json dist/dockey/
       - cp buildspec-test.yml dist/dockey/
+      - cp tsconfig.spec.json dist/dockey/ 
 
 artifacts:
   files:
