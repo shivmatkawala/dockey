@@ -15,10 +15,17 @@ phases:
       - ng build --configuration development
 
   post_build:
+    # commands:
+    #   - echo Build completed.
+    #   - echo Copying buildspec-test.yml into dist...
+    #   - cp buildspec-test.yml dist/dockey/
+    # post_build:
     commands:
-      - echo Build completed.
-      - echo Copying buildspec-test.yml into dist...
+      - echo Copying required files to dist/dockey
+      - cp package.json dist/dockey/
+      - cp package-lock.json dist/dockey/
       - cp buildspec-test.yml dist/dockey/
+
 
 artifacts:
   files:
